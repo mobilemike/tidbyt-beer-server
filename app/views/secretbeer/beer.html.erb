@@ -1,0 +1,53 @@
+"""
+Applet: Beer
+Summary: Display beer on tap    
+Description: Displays a description of waht's on tap, it's ABV, and IBU. 
+Author: Mike Karolow
+"""
+
+load("render.star", "render")
+
+BEER_NAME = "<%= params[:full_name] %>"
+BEER_COLOR = "<%= params[:text_color] %>"
+ABV = "<%= params[:abv]%>%"
+IBU = "<%= params[:ibu] %> IBU"
+
+def main():
+    return render.Root(
+        child = render.Column(
+            expanded = True,
+            main_align = "space_around",
+            cross_align = "center",     
+            children = [
+                render.Marquee(
+                    width = 64,
+                    child = render.WrappedText(
+                        content = BEER_NAME,
+                        color = BEER_COLOR,
+                        align = "center",
+                        width = 64,
+                        font = "tb-8"
+                    )
+                ),
+                render.Box(
+                    width = 60,
+                    height = 1,
+                    color = "#222"
+                ),
+                render.Row(
+                    expanded = True,
+                    main_align = "space_around",
+                    children = [
+                        render.Text(
+                            content = ABV,
+                            color = "#9090FF"
+                        ),
+                        render.Text(
+                            content = IBU,
+                            color = "#90FF90"
+                        )
+                    ]
+                )
+            ]
+        )       
+    )

@@ -1,0 +1,6 @@
+<h1>Janky Beer Login</h1>
+<%= form_with url: "auth/sign_in", method: :post do |form| %>
+  <%= form.label :password, "Password:" %>
+  <%= form.password_field :password %>
+  <%= form.submit "Login" %>
+<% end %>

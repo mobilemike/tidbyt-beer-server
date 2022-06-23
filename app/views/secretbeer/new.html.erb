@@ -1,0 +1,19 @@
+<h1>Janky Beer Sign Creator</h1>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+</br>
+<%= form_with url: "create", method: :post do |form| %>
+  <%= form.label :short_name, "Short Name" %>
+  <%= form.text_field :short_name, placeholder: 'Single word' %></br>
+  <%= form.label :full_name, "Full Name" %>
+  <%= form.text_field :full_name, size: 30, placeholder: 'About 25 characters max' %></br>
+  <%= form.label :text_color, "Text Color" %>
+  <%= form.color_field :text_color, value: '#FFFFFF' %></br>
+  <%= form.label :abv, "ABV" %>
+  <%= form.number_field :abv %></br>
+  <%= form.label :ibu, "IBU" %>
+  <%= form.number_field :ibu %></br>
+  <%= form.submit "Create!" %>
+<% end %>
